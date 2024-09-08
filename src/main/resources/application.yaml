@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    password: bach2612
+    username: root
+    url: jdbc:mysql://localhost:3306/notes
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
