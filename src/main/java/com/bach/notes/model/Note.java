@@ -26,5 +26,8 @@ public class Note {
     LocalDateTime createdAt;
     @UpdateTimestamp
     LocalDateTime updatedAt;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    UserEntity user;
 
 }

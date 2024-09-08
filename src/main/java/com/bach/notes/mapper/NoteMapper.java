@@ -12,6 +12,7 @@ public class NoteMapper {
                 .content(noteDto.getContent())
                 .createdAt(noteDto.getCreatedAt())
                 .updatedAt(noteDto.getUpdatedAt())
+                .user(noteDto.getUser())
                 .build();
     }
 
@@ -22,6 +23,7 @@ public class NoteMapper {
                 .content(note.getContent())
                 .createdAt(note.getCreatedAt())
                 .updatedAt(note.getUpdatedAt())
+                .user(note.getUser())
                 .build();
     }
 

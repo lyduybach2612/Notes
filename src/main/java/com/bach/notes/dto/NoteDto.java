@@ -1,6 +1,7 @@
 package com.bach.notes.dto;
 
 
+import com.bach.notes.model.UserEntity;
 import lombok.Builder;
 import lombok.Data;
 
@@ -15,4 +16,6 @@ public class NoteDto {
     String content;
     LocalDateTime createdAt;
     LocalDateTime updatedAt;
+    UserEntity user;
+
 }
