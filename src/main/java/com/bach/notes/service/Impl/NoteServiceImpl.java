@@ -26,4 +26,10 @@ public class NoteServiceImpl implements NoteService {
         List<Note> notes = noteRepository.findAll();
         return notes.stream().map(NoteMapper::mapToNoteDto).collect(Collectors.toList());
     }
+
+    @Override
+    public void save(NoteDto noteDto) {
+        Note note = NoteMapper.mapToNote(noteDto);
+        noteRepository.save(note);
+    }
 }

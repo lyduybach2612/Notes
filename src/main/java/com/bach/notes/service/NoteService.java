@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface NoteService {
     List<NoteDto> findAllNote();
+
+    void save(NoteDto note);
 }
