@@ -14,4 +14,6 @@ public interface NoteService {
     void updateNote(NoteDto note, Long noteId);
 
     void deleteNote(Long noteId);
+
+    List<NoteDto> findAllNoteByTitle(String title);
 }

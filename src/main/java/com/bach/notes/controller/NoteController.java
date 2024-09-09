@@ -70,5 +70,11 @@ public class NoteController {
         return "redirect:/notes";
     }
 
+    @GetMapping("/search")
+    public String search(@RequestParam(value = "query") String query,Model model) {
+        List<NoteDto> notes = noteService.findAllNoteByTitle(query);
+        model.addAttribute("notes", notes);
+        return "note-list";
+    }
 
 }

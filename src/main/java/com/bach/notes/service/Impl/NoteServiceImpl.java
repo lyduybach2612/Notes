@@ -50,4 +50,10 @@ public class NoteServiceImpl implements NoteService {
     public void deleteNote(Long noteId) {
         noteRepository.deleteById(noteId);
     }
+
+    @Override
+    public List<NoteDto> findAllNoteByTitle(String title) {
+        List<Note> notes = noteRepository.findByTitleContaining(title);
+        return notes.stream().map(NoteMapper::mapToNoteDto).collect(Collectors.toList());
+    }
 }
