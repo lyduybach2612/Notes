@@ -12,11 +12,11 @@
 
     <section layout:fragment="body" class="album py-5 bg-light">
         <div class="container">
-            <div>
-                <form th:action="@{/clubs/search}" class="form-inline my-2 my-lg-0 mb-3">
-                    <input name="query" class="form-control mr-sm-2 mb-5" type="search" placeholder="Search" aria-label="Search">
-                </form>
-            </div>
+<!--            <div>-->
+<!--                <form th:action="@{/clubs/search}" class="form-inline my-2 my-lg-0 mb-3">-->
+<!--                    <input name="query" class="form-control mr-sm-2 mb-5" type="search" placeholder="Search" aria-label="Search">-->
+<!--                </form>-->
+<!--            </div>-->
 
             <div class="row">
                 <div th:each="note : ${notes}" class="col-md-4">
@@ -27,7 +27,7 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                     <a class="btn btn-sm btn-outline-secondary">View</a>
-                                    <a class="btn btn-sm btn-outline-secondary">Edit</a>
+                                    <a class="btn btn-sm btn-outline-secondary" th:href="@{|/notes/edit/${note.id}|}">Edit</a>
                                     <a class="btn btn-sm btn-outline-secondary">Delete</a>
                                 </div>
                             </div>

@@ -32,4 +32,17 @@ public class NoteServiceImpl implements NoteService {
         Note note = NoteMapper.mapToNote(noteDto);
         noteRepository.save(note);
     }
+
+    @Override
+    public NoteDto findNoteById(Long id) {
+        Note note = noteRepository.findById(id).get();
+        return NoteMapper.mapToNoteDto(note);
+    }
+
+    @Override
+    public void updateNote(NoteDto noteDto, Long noteId) {
+        Note note = NoteMapper.mapToNote(noteDto);
+        note.setId(noteId);
+        noteRepository.save(note);
+    }
 }

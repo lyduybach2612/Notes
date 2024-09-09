@@ -10,10 +10,8 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
 import  java.util.*;
 @Controller
 @RequiredArgsConstructor
@@ -23,7 +21,7 @@ public class NoteController {
 
     NoteService noteService;
 
-    @GetMapping("")
+    @GetMapping()
     public String noteListForm(Model model) {
         List<NoteDto> notes = noteService.findAllNote();
         model.addAttribute("notes", notes);
@@ -45,6 +43,25 @@ public class NoteController {
             return "create-note";
         }
         noteService.save(note);
+        return "redirect:/notes";
+    }
+
+    @GetMapping("/edit/{noteId}")
+    public String editNoteForm(@PathVariable Long noteId, Model model) {
+        NoteDto note = noteService.findNoteById(noteId);
+        model.addAttribute("note", note);
+        return "edit-note";
+    }
+
+    @PostMapping("/edit/{noteId}")
+    public String updateNote(@PathVariable Long noteId,
+                             @ModelAttribute("note") @Valid NoteDto note,
+                           BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("note", note);
+            return "edit-note";
+        }
+        noteService.updateNote(note, noteId);
         return "redirect:/notes";
     }
 

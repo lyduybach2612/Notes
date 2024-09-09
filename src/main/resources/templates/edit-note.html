@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Note</title>
+</head>
+<body>
+<main role="main">
+
+  <section layout:fragment="body" class="album py-5 bg-light">
+    <div class="container">
+      <form th:object="${note}" method="post" th:action="@{|/notes/edit/${note.id}|}">
+        <input type="hidden" th:field="*{id}" />
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" th:field="*{title}" class="form-control" id="title">
+          <p th:if="${#fields.hasErrors('title')}" class="text-danger" th:errors="*{title}"></p>
+        </div>
+        <div class="mb-3">
+          <label for="content" class="form-label">Content</label>
+          <input type="text" th:field="*{content}" class="form-control" id="content">
+          <p th:if="${#fields.hasErrors('content')}" class="text-danger" th:errors="*{content}"></p>
+        </div>
+        <button type="submit" class="btn btn-primary">Edit</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>
