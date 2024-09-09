@@ -1,7 +1,6 @@
 package com.bach.notes.controller;
 
 import com.bach.notes.dto.NoteDto;
-import com.bach.notes.model.Note;
 import com.bach.notes.service.NoteService;
 import jakarta.validation.Valid;
 import lombok.AccessLevel;
@@ -64,5 +63,12 @@ public class NoteController {
         noteService.updateNote(note, noteId);
         return "redirect:/notes";
     }
+
+    @GetMapping("/delete/{noteId}")
+    public String deleteNote(@PathVariable Long noteId) {
+        noteService.deleteNote(noteId);
+        return "redirect:/notes";
+    }
+
 
 }

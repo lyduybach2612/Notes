@@ -45,4 +45,9 @@ public class NoteServiceImpl implements NoteService {
         note.setId(noteId);
         noteRepository.save(note);
     }
+
+    @Override
+    public void deleteNote(Long noteId) {
+        noteRepository.deleteById(noteId);
+    }
 }
