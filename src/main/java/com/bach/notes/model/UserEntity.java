@@ -20,8 +20,8 @@ public class UserEntity {
     String username;
     String password;
     String email;
-//
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//    List<Note> notes = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    List<Note> notes = new ArrayList<>();
 
 }

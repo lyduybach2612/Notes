@@ -23,6 +23,6 @@ public class NoteDto {
     String content;
     LocalDateTime createdAt;
     LocalDateTime updatedAt;
-//    UserEntity user;
+    UserEntity user;
 
 }

@@ -4,7 +4,10 @@ package com.bach.notes.service.Impl;
 import com.bach.notes.dto.NoteDto;
 import com.bach.notes.mapper.NoteMapper;
 import com.bach.notes.model.Note;
+import com.bach.notes.model.UserEntity;
 import com.bach.notes.repository.NoteRepository;
+import com.bach.notes.repository.SecurityUtil;
+import com.bach.notes.repository.UserRepository;
 import com.bach.notes.service.NoteService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +23,7 @@ import java.util.stream.Collectors;
 public class NoteServiceImpl implements NoteService {
 
     NoteRepository noteRepository;
+    UserRepository userRepository;
 
     @Override
     public List<NoteDto> findAllNote() {
@@ -29,7 +33,10 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     public void save(NoteDto noteDto) {
+        String username = SecurityUtil.getSessionUser();
+        UserEntity user = userRepository.findByUsername(username);
         Note note = NoteMapper.mapToNote(noteDto);
+        note.setUser(user);
         noteRepository.save(note);
     }
 

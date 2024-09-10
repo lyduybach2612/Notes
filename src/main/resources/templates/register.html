@@ -12,6 +12,8 @@
 
     <section layout:fragment="body" class="album py-5 bg-light">
         <div class="container">
+            <div class="text-center fs-3 fw-bold">Register Account</div>
+            <div class="text-center fs-5 text-secondary mt-1">Create An Account</div>
             <form th:object="${user}" method="post" th:action="@{/register}">
                 <div class="text-danger" th:if="${param.fail}">Username or email already exists</div>
                 <div class="mb-3">
@@ -31,6 +33,7 @@
                     <input type="password" th:field="*{password}" class="form-control" id="password">
                     <p th:if="${#fields.hasErrors('password')}" class="text-danger" th:errors="*{password}"></p>
                 </div>
+                <div class="mb-3">If you had an account, please <a th:href="@{/login}">Log in here</a></div>
                 <button type="submit" class="btn btn-primary">Register</button>
             </form>
         </div>

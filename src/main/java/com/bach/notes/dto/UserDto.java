@@ -25,6 +25,6 @@ public class UserDto {
     String password;
     @NotEmpty(message = "Email cannot be empty")
     String email;
-//    List<Note> notes;
+    List<Note> notes;
 
 }

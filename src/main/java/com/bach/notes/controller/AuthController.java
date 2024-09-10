@@ -45,7 +45,11 @@ public class AuthController {
             return "register";
         }
         userService.save(userDto);
-        return "redirect:/notes?success";
+        return "redirect:/login?success";
     }
 
+    @GetMapping("/login")
+    public String loginForm(Model model) {
+        return "login";
+    }
 }

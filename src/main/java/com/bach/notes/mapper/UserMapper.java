@@ -11,7 +11,7 @@ public class UserMapper {
                 .username(userDto.getUsername())
                 .password(userDto.getPassword())
                 .email(userDto.getEmail())
-//                .notes(userDto.getNotes())
+                .notes(userDto.getNotes())
                 .build();
     }
 
@@ -21,7 +21,7 @@ public class UserMapper {
                 .username(userEntity.getUsername())
                 .password(userEntity.getPassword())
                 .email(userEntity.getEmail())
-//                .notes(userEntity.getNotes())
+                .notes(userEntity.getNotes())
                 .build();
     }
 
