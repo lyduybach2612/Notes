@@ -39,7 +39,7 @@ public class SecurityConfig {
                         .loginPage("/login")
                         .defaultSuccessUrl("/notes")
                         .loginProcessingUrl("/login")
-                        .failureUrl("/login?error=true")
+                        .failureUrl("/login?fail=true")
                         .permitAll())
                 .logout(logout->logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout")));
         return http.build();

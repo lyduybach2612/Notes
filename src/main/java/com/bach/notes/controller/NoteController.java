@@ -1,7 +1,11 @@
 package com.bach.notes.controller;
 
 import com.bach.notes.dto.NoteDto;
+import com.bach.notes.dto.UserDto;
+import com.bach.notes.model.UserEntity;
+import com.bach.notes.repository.SecurityUtil;
 import com.bach.notes.service.NoteService;
+import com.bach.notes.service.UserService;
 import jakarta.validation.Valid;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -19,10 +23,13 @@ import  java.util.*;
 public class NoteController {
 
     NoteService noteService;
+    UserService userService;
 
     @GetMapping()
     public String noteListForm(Model model) {
-        List<NoteDto> notes = noteService.findAllNote();
+        String username = SecurityUtil.getSessionUser();
+        UserEntity user =  userService.findUserByUsername(username);
+        List<NoteDto> notes = noteService.findAllNoteByUser(user);
         model.addAttribute("notes", notes);
         return "note-list";
     }

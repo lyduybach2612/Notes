@@ -60,7 +60,15 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     public List<NoteDto> findAllNoteByTitle(String title) {
-        List<Note> notes = noteRepository.findByTitleContaining(title);
+        String username = SecurityUtil.getSessionUser();
+        UserEntity user = userRepository.findByUsername(username);
+        List<Note> notes = noteRepository.findByTitleContainingAndUser(title,user);
+        return notes.stream().map(NoteMapper::mapToNoteDto).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<NoteDto> findAllNoteByUser(UserEntity user) {
+        List<Note> notes = noteRepository.findByUser(user);
         return notes.stream().map(NoteMapper::mapToNoteDto).collect(Collectors.toList());
     }
 }

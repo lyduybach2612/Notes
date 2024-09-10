@@ -1,6 +1,7 @@
 package com.bach.notes.service;
 
 import com.bach.notes.dto.NoteDto;
+import com.bach.notes.model.UserEntity;
 
 import java.util.List;
 
@@ -16,4 +17,6 @@ public interface NoteService {
     void deleteNote(Long noteId);
 
     List<NoteDto> findAllNoteByTitle(String title);
+
+    List<NoteDto> findAllNoteByUser(UserEntity user);
 }
