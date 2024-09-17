@@ -1,9 +1,8 @@
 package com.bach.notes.controller;
 
 import com.bach.notes.dto.NoteDto;
-import com.bach.notes.dto.UserDto;
 import com.bach.notes.model.UserEntity;
-import com.bach.notes.repository.SecurityUtil;
+import com.bach.notes.securityConfig.SecurityUtil;
 import com.bach.notes.service.NoteService;
 import com.bach.notes.service.UserService;
 import jakarta.validation.Valid;

@@ -1,4 +1,4 @@
-package com.bach.notes.service.Impl;
+package com.bach.notes.service.impl;
 
 
 import com.bach.notes.dto.NoteDto;
@@ -6,7 +6,7 @@ import com.bach.notes.mapper.NoteMapper;
 import com.bach.notes.model.Note;
 import com.bach.notes.model.UserEntity;
 import com.bach.notes.repository.NoteRepository;
-import com.bach.notes.repository.SecurityUtil;
+import com.bach.notes.securityConfig.SecurityUtil;
 import com.bach.notes.repository.UserRepository;
 import com.bach.notes.service.NoteService;
 import lombok.AccessLevel;

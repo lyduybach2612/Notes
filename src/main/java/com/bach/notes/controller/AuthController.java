@@ -1,7 +1,9 @@
 package com.bach.notes.controller;
 
+import com.bach.notes.dto.ChangePasswordDto;
 import com.bach.notes.dto.UserDto;
 import com.bach.notes.model.UserEntity;
+import com.bach.notes.securityConfig.SecurityUtil;
 import com.bach.notes.service.UserService;
 import jakarta.validation.Valid;
 import lombok.AccessLevel;
@@ -52,4 +54,34 @@ public class AuthController {
     public String loginForm(Model model) {
         return "login";
     }
+
+    @GetMapping("/password")
+    public String changePasswordForm(Model model) {
+        ChangePasswordDto changePasswordDto = new ChangePasswordDto();
+        model.addAttribute("changePasswordDto", changePasswordDto);
+        return "change-password";
+    }
+
+    @PostMapping("/password")
+    public String changePassword(@ModelAttribute("changePasswordDto") @Valid ChangePasswordDto changePasswordDto,
+                                 BindingResult bindingResult,
+                                 Model model){
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("changePasswordDto", changePasswordDto);
+            return "change-password";
+        }
+
+        try{
+            userService.changePassword(changePasswordDto);
+            return "redirect:/password?success";
+        }
+
+
+        catch (RuntimeException e){
+            model.addAttribute("changePasswordDto", changePasswordDto);
+            return "redirect:/password?fail";
+        }
+
+    }
+
 }

@@ -1,4 +1,4 @@
-package com.bach.notes.repository;
+package com.bach.notes.securityConfig;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
