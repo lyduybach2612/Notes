@@ -18,4 +18,4 @@ Notes là web app được xây dựng bằng Spring Boot với Java 21.
 
 ## Công nghệ sử dụng
 - Bootstrap 5
-- Spring Boot, Spring Data JPA, Spring Security, Hibernate
+- Spring Boot, SpringMVC, Spring Data JPA, Spring Security, Hibernate
